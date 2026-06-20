@@ -3,7 +3,7 @@ export function errorHandler(
   error: Error,
   req: Request,
   res: Response,
-  next: NextFunction,
+  _next: NextFunction,
 ): void {
   console.error(error);
   res.status(500).json({ error: 'Error interno del servidor' });
