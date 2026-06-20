@@ -9,6 +9,6 @@ const prisma = new PrismaClient({ adapter });
 prisma
   .$connect()
   .then(() => console.log('DB conectada'))
-  .catch((err) => console.error('Error conectando DB:', err));
+  .catch((err: Error) => console.error('Error conectando DB:', err));
 
 export { prisma };
