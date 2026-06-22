@@ -2,7 +2,7 @@ import { z } from 'zod';
 import type { Request, Response, NextFunction } from 'express';
 
 const schema = z.object({
-  fullname: z.string().min(2, 'El nombre debe tener al menos 2 caracteres'),
+  fullName: z.string().min(2, 'El nombre debe tener al menos 2 caracteres'),
   email: z.email('Email Invalido'),
   phone: z.string().min(10, 'Ingrese un numero de telefono valido'),
   company: z.string(),

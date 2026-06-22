@@ -6,7 +6,7 @@ export interface ClientData {
   email: string;
   phone: string;
   company: string;
-  status: 'ACTIVE' | 'INACTIVE';
+  status: boolean;
   createdAt: Date;
   updatedAt: Date;
 }
@@ -15,19 +15,11 @@ export class Client {
   static async create(
     data: Omit<ClientData, 'id' | 'createdAt' | 'updatedAt' | 'status'>,
   ) {
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!emailRegex.test(data.email)) {
-      throw new Error(`Email inválido: ${data.email}`);
-    }
-    if (!data.fullName || data.fullName.trim().length < 2) {
-      throw new Error('El nombre debe tener al menos 2 caracteres');
-    }
-
     return prisma.client.create({
       data: {
         ...data,
         email: data.email.toLowerCase(),
-        fullname: data.fullName.trim(),
+        fullName: data.fullName.trim(),
       },
     });
   }
@@ -46,12 +38,14 @@ export class Client {
 
   static async update(
     id: string,
-    data: Partial<Omit<ClientData, 'id' | 'createdAt' | 'updatedAt'>>,
+    data: Partial<
+      Omit<ClientData, 'id' | 'createdAt' | 'updatedAt' | 'status'>
+    >,
   ) {
     return prisma.client.update({ where: { id }, data });
   }
 
   static async delete(id: string) {
-    return prisma.client.delete({ where: { id } });
+    return prisma.client.update({ where: { id }, data: { isActive: false } });
   }
 }
