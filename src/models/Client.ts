@@ -25,11 +25,11 @@ export class Client {
   }
 
   static async findAll() {
-    return prisma.client.findMany();
+    return prisma.client.findMany({ where: { status: true } });
   }
 
   static async findById(id: string) {
-    return prisma.client.findUnique({ where: { id } });
+    return prisma.client.findUnique({ where: { id, status: true } });
   }
 
   static async findByEmail(email: string) {
@@ -46,6 +46,6 @@ export class Client {
   }
 
   static async delete(id: string) {
-    return prisma.client.update({ where: { id }, data: { isActive: false } });
+    return prisma.client.update({ where: { id }, data: { status: false } });
   }
 }
