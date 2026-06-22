@@ -12,18 +12,14 @@ datasource db {
   provider = "postgresql"
 }
 
-enum ClientStatus {
-  ACTIVE
-  INACTIVE
-}
 
 model Client {
   id            String       @id @default(uuid())
-  fullname      String
+  fullName      String
   email         String       @unique
   phone         String
   company       String
-  status        ClientStatus @default(ACTIVE)
+  status        Boolean      @default(true)
   createdAt     DateTime     @default(now())
   updatedAt     DateTime     @updatedAt
 }

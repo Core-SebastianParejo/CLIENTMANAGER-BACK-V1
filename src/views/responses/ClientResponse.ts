@@ -6,7 +6,7 @@ interface ClientResponseShape {
   email: string;
   phone: string;
   company: string;
-  status: 'ACTIVE' | 'INACTIVE';
+  status: boolean;
   createdAt: string;
 }
 
