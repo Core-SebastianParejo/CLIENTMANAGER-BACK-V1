@@ -18,11 +18,11 @@ services:
     ports:
       - '3000:3000'
     env_file:
-    - .env.docker
+      - .env.docker
     environment:
-      DATABASE_URL: "postgresql://postgres:postgres@postgres:5432/myapp?schema=public"
+      DATABASE_URL: 'postgresql://postgres:postgres@postgres:5432/myapp?schema=public'
     depends_on:
-    - postgres
+      - postgres
 
 volumes:
   postgres_data:
