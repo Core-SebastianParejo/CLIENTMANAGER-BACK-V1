@@ -22,6 +22,7 @@ export class ClientController {
         res.status(422).json({ error: (error as Error).message });
         return;
       }
+      console.error(error);
       res.status(500).json({ error: 'Error interno del servidor' });
     }
   };
@@ -33,7 +34,7 @@ export class ClientController {
         .status(200)
         .json(clients.map((client) => ClientResponse.from(client)));
     } catch (_error) {
-      res.status(500).json({ error: 'Error interno del servidor: ' });
+      res.status(500).json({ error: 'Error interno del servidor' });
     }
   };
 

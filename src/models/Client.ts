@@ -15,6 +15,10 @@ export class Client {
   static async create(
     data: Omit<ClientData, 'id' | 'createdAt' | 'updatedAt' | 'status'>,
   ) {
+    const clientExist = await this.findByEmail(data.email);
+    if (clientExist) {
+      throw new Error('Ya Existe un cliente con este Email.');
+    }
     return prisma.client.create({
       data: {
         ...data,
