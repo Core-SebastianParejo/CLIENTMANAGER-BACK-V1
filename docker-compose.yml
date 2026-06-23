@@ -11,6 +11,18 @@ services:
       - '5432:5432'
     volumes:
       - postgres_data:/var/lib/postgresql/data
+  app:
+    build: .
+    container_name: backend-app
+    restart: unless-stopped
+    ports:
+      - '3000:3000'
+    env_file:
+    - .env.docker
+    environment:
+      DATABASE_URL: "postgresql://postgres:postgres@postgres:5432/myapp?schema=public"
+    depends_on:
+    - postgres
 
 volumes:
   postgres_data:
