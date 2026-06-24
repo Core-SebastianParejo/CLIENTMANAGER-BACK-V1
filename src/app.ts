@@ -1,15 +1,11 @@
-import express from 'express';
+import express, { type Application } from 'express';
+import router from './routes/index.js';
+import { errorHandler } from './middlewares/errorHandler.js';
 
-const app = express();
+const app: Application = express();
 
-app.get('/', (req, res) => {
-  res.send('Hello World!');
-});
+app.use(express.json());
+app.use('/api', router);
+app.use(errorHandler);
 
-app.get('/health', (req, res) => {
-  res.status(200).json({status: 'ok'})
-})
-
-app.listen(3000, () => {
-  console.log('App Listening on http://Localhost:3000');
-});
+export default app;
