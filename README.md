@@ -159,26 +159,26 @@ docker-compose down
 
 ### Auth
 
-| Método | Endpoint            | Descripción             | Auth requerida |
-|--------|---------------------|-------------------------|----------------|
-| POST   | /api/auth/register  | Registrar un usuario    | No             |
-| POST   | /api/auth/login     | Iniciar sesión          | No             |
+| Método | Endpoint           | Descripción          | Auth requerida |
+| ------ | ------------------ | -------------------- | -------------- |
+| POST   | /api/auth/register | Registrar un usuario | No             |
+| POST   | /api/auth/login    | Iniciar sesión       | No             |
 
 ### Clients
 
-| Método | Endpoint            | Descripción                        | Auth requerida |
-|--------|---------------------|------------------------------------|----------------|
-| GET    | /api/clients        | Listar clientes activos            | Sí             |
-| GET    | /api/clients/:id    | Obtener un cliente por ID          | Sí             |
-| POST   | /api/clients        | Crear un cliente                   | Sí             |
-| PUT    | /api/clients/:id    | Actualizar un cliente              | Sí             |
-| DELETE | /api/clients/:id    | Desactivar un cliente (soft delete)| Sí             |
+| Método | Endpoint         | Descripción                         | Auth requerida |
+| ------ | ---------------- | ----------------------------------- | -------------- |
+| GET    | /api/clients     | Listar clientes activos             | Sí             |
+| GET    | /api/clients/:id | Obtener un cliente por ID           | Sí             |
+| POST   | /api/clients     | Crear un cliente                    | Sí             |
+| PUT    | /api/clients/:id | Actualizar un cliente               | Sí             |
+| DELETE | /api/clients/:id | Desactivar un cliente (soft delete) | Sí             |
 
 ### Health
 
-| Método | Endpoint     | Descripción          |
-|--------|--------------|----------------------|
-| GET    | /api/health  | Estado del servidor  |
+| Método | Endpoint    | Descripción         |
+| ------ | ----------- | ------------------- |
+| GET    | /api/health | Estado del servidor |
 
 ---
 
